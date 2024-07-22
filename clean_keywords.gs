@@ -33,11 +33,11 @@ function cleanAndCategorizeKeywords() {
     var toolsKeywords = ["Google Sheets", "Pivot Tables", "Power BI", "Plotly", "Matplotlib", "Python", "SQL", "BigQuery", "Machine Learning", "Jupyter Notebook", "Seaborn", "Scikit-learn", "Google Looker", "Census", "Hubspot", "Tableau", "Fivetran", "GTM", "Airflow", "Dbt", "Git", "Github", "Azure", "Snowflake", "Redshift", "Zapier", "Pandas", "Numpy"];
 
     for (var i = 2; i <= lastRow; i++) {  // Start from row 2, assuming row 1 is headers
-      var exerciseText = sheet.getRange(i, 2).getValue();  // Get text from Column B
+      var exerciseText = sheet.getRange(i, 4).getValue();  // Get text from Column D
       var cleanedKeywords = getKeywords(exerciseText, stopwords);
       
-      // Cleaned keywords in Column C
-      sheet.getRange(i, 3).setValue(cleanedKeywords.join(', '));
+      // Cleaned keywords in Column E
+      sheet.getRange(i, 5).setValue(cleanedKeywords.join(', '));
 
       var relevantList = [];
       var lessRelevantList = [];
@@ -84,18 +84,18 @@ function cleanAndCategorizeKeywords() {
         }
       });
 
-      // Relevant keywords in Column D
-      sheet.getRange(i, 4).setValue(relevantList.join(', '));
-      // Less relevant keywords in Column E
-      sheet.getRange(i, 5).setValue(lessRelevantList.join(', '));
-      // Functions in Column F
-      sheet.getRange(i, 6).setValue(functionsList.join(', '));
-      // Department-related keywords in Column G
-      sheet.getRange(i, 7).setValue(departmentList.join(', '));
-      // Metrics-related keywords in Column H
-      sheet.getRange(i, 8).setValue(metricsList.join(', '));
-      // Tools used in data analysis in Column I
-      sheet.getRange(i, 9).setValue(toolsList.join(', '));
+      // Relevant keywords in Column F
+      sheet.getRange(i, 6).setValue(relevantList.join(', '));
+      // Less relevant keywords in Column G
+      sheet.getRange(i, 7).setValue(lessRelevantList.join(', '));
+      // Functions in Column H
+      sheet.getRange(i, 8).setValue(functionsList.join(', '));
+      // Department-related keywords in Column I
+      sheet.getRange(i, 9).setValue(departmentList.join(', '));
+      // Metrics-related keywords in Column J
+      sheet.getRange(i, 10).setValue(metricsList.join(', '));
+      // Tools used in data analysis in Column K
+      sheet.getRange(i, 11).setValue(toolsList.join(', '));
     }
   } catch (error) {
     Logger.log("Error: " + error.message);
